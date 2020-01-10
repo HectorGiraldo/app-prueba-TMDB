@@ -1,6 +1,9 @@
 {
-  "name": "05-peliculasApp",
-  "integrations": {},
+  "name": "TMDApp",
+  "integrations": {
+    "capacitor": {},
+    "cordova": {}
+  },
   "type": "angular",
   "id": "91d7d6e9"
 }

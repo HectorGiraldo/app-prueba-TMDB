@@ -1,0 +1,8 @@
+{
+  "appId": "com.hectorgiraldo.tmdApp",
+  "appName": "tmdApp",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www",
+  "cordova": {}
+}
