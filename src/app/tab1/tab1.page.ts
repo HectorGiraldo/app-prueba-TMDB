@@ -13,6 +13,8 @@ export class Tab1Page implements OnInit {
   PeliculasPopulares: Pelicula[] = [];
   movieNowPlaying: Pelicula[] = [];
   tvShowsAir: Pelicula[] = [];
+  tvShowsPopular: Pelicula[] = [];
+
 
 
   constructor(
@@ -24,6 +26,7 @@ export class Tab1Page implements OnInit {
     this.getPopulares();
     this.getMovieNowPlaying();
     this.getTvShowsAir();
+    this.getTvShowsPopular();
   }
 
   cargarMas() {
@@ -31,7 +34,7 @@ export class Tab1Page implements OnInit {
     this.getCartelera();
     this.getMovieNowPlaying();
     this.getTvShowsAir();
-
+    this.getTvShowsPopular();
   }
 
 
@@ -64,6 +67,14 @@ export class Tab1Page implements OnInit {
     .subscribe( resp => {
       const arrTemp = [ ...this.tvShowsAir, ...resp.results];
       this.tvShowsAir = arrTemp;
+    });
+  }
+
+  getTvShowsPopular() {
+    this.moviesService.getTvPopular()
+    .subscribe( resp => {
+      const arrTemp = [ ...this.tvShowsPopular, ...resp.results];
+      this.tvShowsPopular = arrTemp;
     });
   }
 

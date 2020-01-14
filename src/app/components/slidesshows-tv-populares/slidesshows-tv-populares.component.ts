@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Pelicula } from '../../interfaces/interfaces';
+import { ModalController } from '@ionic/angular';
+import { DetalleTvComponent } from '../detalle-tv/detalle-tv.component';
 
 @Component({
   selector: 'app-slidesshows-tv-populares',
@@ -7,8 +10,33 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SlidesshowsTvPopularesComponent implements OnInit {
 
-  constructor() { }
+  @Input() peliculas: Pelicula [] = [];
+  @Output() cargarMas = new EventEmitter();
+
+  slideOpts = {
+    slidesPerView: 3.2,
+    freeMode: true
+  };
+
+  constructor(
+    private modalCtrl: ModalController
+  ) { }
 
   ngOnInit() {}
+
+  reachedEnd() {
+    this.cargarMas.emit();
+  }
+
+  async verDetalle( id: string ) {
+    const modal = await this.modalCtrl.create({
+      component: DetalleTvComponent,
+      componentProps: {
+        id
+      }
+    });
+
+    modal.present();
+  }
 
 }

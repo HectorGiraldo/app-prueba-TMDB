@@ -15,6 +15,7 @@ export class MoviesService {
   private carteleraPage = 0;
   private movieNowPage = 0;
   private tvShowPage = 0;
+  private tvShowPopularPage = 0;
 
   constructor(
     private http: HttpClient
@@ -88,6 +89,11 @@ export class MoviesService {
 
   getDetalleTv( id: string ) {
     return this.ejecutarQuery<PeliculaDetalle>(`/tv/${ id }?a=1`);
+  }
+
+  getTvPopular() {
+    this.tvShowPopularPage++;
+    return this.ejecutarQuery<RespuestaMDB>(`/tv/popular?a=1&page=${this.tvShowPopularPage}`);
   }
 
 }
