@@ -1,20 +1,20 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Pelicula } from '../../interfaces/interfaces';
-import { ModalController } from '@ionic/angular';
+import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
 import { DetalleComponent } from '../detalle/detalle.component';
+import { ModalController } from '@ionic/angular';
+import { Pelicula } from '../../interfaces/interfaces';
 
 @Component({
-  selector: 'app-slideshows-backdrop',
-  templateUrl: './slideshows-backdrop.component.html',
-  styleUrls: ['./slideshows-backdrop.component.scss'],
+  selector: 'app-slidesshows-populares',
+  templateUrl: './slidesshows-populares.component.html',
+  styleUrls: ['./slidesshows-populares.component.scss'],
 })
-export class SlideshowsBackdropComponent implements OnInit {
+export class SlidesshowsPopularesComponent implements OnInit {
 
   @Input() peliculas: Pelicula [] = [];
   @Output() cargarMas = new EventEmitter();
 
   slideOpts = {
-    slidesPerView: 1.2,
+    slidesPerView: 3.2,
     freeMode: true
   };
 
@@ -38,4 +38,5 @@ export class SlideshowsBackdropComponent implements OnInit {
 
     modal.present();
   }
+
 }

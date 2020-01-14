@@ -19,6 +19,10 @@ export class Tab3Page implements OnInit {
     this.cargarPeliculas();
   }
 
+  ionViewWillEnter() {
+    this.cargarPeliculas();
+  }
+
   cargarMas() {
     this.cargarPeliculas();
   }

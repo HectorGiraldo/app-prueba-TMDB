@@ -5,11 +5,11 @@ import { ModalController } from '@ionic/angular';
 import { DataService } from '../../services/data.service';
 
 @Component({
-  selector: 'app-detalle',
-  templateUrl: './detalle.component.html',
-  styleUrls: ['./detalle.component.scss'],
+  selector: 'app-detalle-tv',
+  templateUrl: './detalle-tv.component.html',
+  styleUrls: ['./detalle-tv.component.scss'],
 })
-export class DetalleComponent implements OnInit {
+export class DetalleTvComponent implements OnInit {
 
   @Input() id;
 
@@ -31,8 +31,8 @@ export class DetalleComponent implements OnInit {
 
   ngOnInit() {
 
-    this.getPeliculaDetalle(this.id);
-    this.getPeliculaActores(this.id);
+    this.getTvDetalle(this.id);
+    this.gettvActores(this.id);
     this.existeFavorito();
 
   }
@@ -42,14 +42,14 @@ export class DetalleComponent implements OnInit {
     .then( existe => this.estrella = ( existe ) ? 'star' : 'star-outline' );
   }
 
-  getPeliculaDetalle( id: string ) {
-    this.moviesService.getDetallePelicula(id)
+  getTvDetalle( id: string ) {
+    this.moviesService.getDetalleTv(id)
     .subscribe( resp => {
       this.detalle = resp;
     });
   }
 
-  getPeliculaActores( id: string ) {
+  gettvActores( id: string ) {
     this.moviesService.getActoresPelicula(id)
     .subscribe( resp => {
       this.actores = resp.cast;
@@ -65,6 +65,5 @@ export class DetalleComponent implements OnInit {
     this.estrella = ( existe ) ? 'star' : 'star-outline';
   }
 
-  
 
 }

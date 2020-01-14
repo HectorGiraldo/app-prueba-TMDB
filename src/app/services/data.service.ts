@@ -9,7 +9,7 @@ import { ToastController } from '@ionic/angular';
 export class DataService {
 
   peliculas: PeliculaDetalle[] = [];
-  
+
 
   constructor(
     private storage: Storage,
@@ -53,12 +53,13 @@ export class DataService {
 
   async cargarFavoritos() {
     const peliculas = await this.storage.get( 'peliculas' );
+    console.log(peliculas);
     this.peliculas = peliculas || [];
     return this.peliculas;
   }
 
   async existePelicula( id ) {
-   
+
     await this.cargarFavoritos();
     const existe = this.peliculas.find( peli => peli.id === id );
 

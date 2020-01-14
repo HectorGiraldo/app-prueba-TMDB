@@ -13,6 +13,9 @@ export class MoviesService {
 
   private popularesPage = 0;
   private carteleraPage = 0;
+  private movieNowPage = 0;
+  private tvShowPage = 0;
+
   constructor(
     private http: HttpClient
   ) { }
@@ -20,6 +23,7 @@ export class MoviesService {
   private ejecutarQuery<T>(query: string) {
     query = apiUrl + query;
     query += `&api_key=${ apiKey }&language=es&include_image_language=es`;
+    console.log(query);
     return this.http.get<T>(query);
   }
 
@@ -70,6 +74,20 @@ export class MoviesService {
 
     return this.ejecutarQuery<RespuestaBusqueda>(`/search/movie?query=${texto}`);
 
+  }
+
+  getMovieNowPlaying() {
+    this.movieNowPage++;
+    return this.ejecutarQuery<RespuestaMDB>(`/movie/now_playing?a=1&page=${this.movieNowPage}`);
+  }
+
+  getTvShowsAir() {
+    this.tvShowPage++;
+    return this.ejecutarQuery<RespuestaMDB>(`/tv/on_the_air?a=1&page=${this.tvShowPage}`);
+  }
+
+  getDetalleTv( id: string ) {
+    return this.ejecutarQuery<PeliculaDetalle>(`/tv/${ id }?a=1`);
   }
 
 }

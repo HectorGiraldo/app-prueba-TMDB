@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MoviesService } from '../services/movies.service';
-import { Pelicula } from '../interfaces/interfaces';
+import { Pelicula, PeliculaDetalle } from '../interfaces/interfaces';
 
 @Component({
   selector: 'app-tab1',
@@ -11,6 +11,8 @@ export class Tab1Page implements OnInit {
 
   peliculasRecientes: Pelicula[] = [];
   PeliculasPopulares: Pelicula[] = [];
+  movieNowPlaying: Pelicula[] = [];
+  tvShowsAir: Pelicula[] = [];
 
 
   constructor(
@@ -20,11 +22,16 @@ export class Tab1Page implements OnInit {
   ngOnInit() {
     this.getCartelera();
     this.getPopulares();
+    this.getMovieNowPlaying();
+    this.getTvShowsAir();
   }
 
   cargarMas() {
     this.getPopulares();
     this.getCartelera();
+    this.getMovieNowPlaying();
+    this.getTvShowsAir();
+
   }
 
 
@@ -41,6 +48,22 @@ export class Tab1Page implements OnInit {
     .subscribe( resp => {
       const arrTemp = [ ...this.peliculasRecientes, ...resp.results];
       this.peliculasRecientes = arrTemp;
+    });
+  }
+
+  getMovieNowPlaying() {
+    this.moviesService.getMovieNowPlaying()
+    .subscribe( resp => {
+      const arrTemp = [ ...this.movieNowPlaying, ...resp.results];
+      this.movieNowPlaying = arrTemp;
+    });
+  }
+
+  getTvShowsAir() {
+    this.moviesService.getTvShowsAir()
+    .subscribe( resp => {
+      const arrTemp = [ ...this.tvShowsAir, ...resp.results];
+      this.tvShowsAir = arrTemp;
     });
   }
 

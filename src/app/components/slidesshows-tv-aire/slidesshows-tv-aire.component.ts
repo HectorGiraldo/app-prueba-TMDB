@@ -1,14 +1,14 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Pelicula } from '../../interfaces/interfaces';
-import { DetalleComponent } from '../detalle/detalle.component';
 import { ModalController } from '@ionic/angular';
+import { DetalleTvComponent } from '../detalle-tv/detalle-tv.component';
 
 @Component({
-  selector: 'app-poster-path',
-  templateUrl: './poster-path.component.html',
-  styleUrls: ['./poster-path.component.scss'],
+  selector: 'app-slidesshows-tv-aire',
+  templateUrl: './slidesshows-tv-aire.component.html',
+  styleUrls: ['./slidesshows-tv-aire.component.scss'],
 })
-export class PosterPathComponent implements OnInit {
+export class SlidesshowsTvAireComponent implements OnInit {
 
   @Input() peliculas: Pelicula [] = [];
   @Output() cargarMas = new EventEmitter();
@@ -30,7 +30,7 @@ export class PosterPathComponent implements OnInit {
 
   async verDetalle( id: string ) {
     const modal = await this.modalCtrl.create({
-      component: DetalleComponent,
+      component: DetalleTvComponent,
       componentProps: {
         id
       }
