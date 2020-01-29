@@ -38,3 +38,12 @@
     top: 15px;
     color: var( --ion-color-light) !important;
 }
+
+ion-item {
+    --background: none;
+    opacity: 1;
+}
+
+.detalle {
+    font-size: 1rem;
+}

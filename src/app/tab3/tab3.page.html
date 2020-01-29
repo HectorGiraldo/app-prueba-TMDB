@@ -3,11 +3,21 @@
     <ion-grid fixed>
         <ion-row>
             <ion-col>
-                <h3>Favoritos</h3>
+                <h3>Series Favoritas</h3>
             </ion-col>
         </ion-row>
     </ion-grid>
 
-    <app-poster-path [peliculas]='peliculasFavoritas' (cargarMas)="cargarMas()"></app-poster-path>
+    <app-slidesshows-tv-aire [peliculas]='seriesFavoritas' (cargarMas)="cargarMas()"></app-slidesshows-tv-aire>
+
+    <ion-grid fixed>
+        <ion-row>
+            <ion-col>
+                <h3>Peliculas Favoritas</h3>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+
+    <app-slidesshows-populares [peliculas]='peliculasFavoritas' (cargarMas)="cargarMas()"></app-slidesshows-populares>
 
 </ion-content>

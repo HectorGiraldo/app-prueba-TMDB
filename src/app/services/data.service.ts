@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
-import { PeliculaDetalle } from '../interfaces/interfaces';
+import { PeliculaDetalle, TvDetalle } from '../interfaces/interfaces';
 import { ToastController } from '@ionic/angular';
 
 @Injectable({
@@ -9,6 +9,7 @@ import { ToastController } from '@ionic/angular';
 export class DataService {
 
   peliculas: PeliculaDetalle[] = [];
+  series: TvDetalle[] = [];
 
 
   constructor(
@@ -51,17 +52,58 @@ export class DataService {
     return !existe;
   }
 
+  guardarTv( tv: TvDetalle) {
+
+    let existe = false;
+    let mensaje = '';
+
+    for ( const peli of this.series ) {
+      if ( peli.id === tv.id ) {
+        existe = true;
+        break;
+      }
+    }
+
+    if ( existe ) {
+      this.series = this.series.filter( peli => peli.id !== tv.id );
+      mensaje = 'Removido de Favoritos';
+    } else {
+      this.series.push( tv );
+      mensaje = 'Agregado a Favoritos';
+    }
+
+    this.presentToast( mensaje );
+    this.storage.set('tv', this.series);
+    console.log('guardarTv', this.series);
+    
+    return !existe;
+  }
+
   async cargarFavoritos() {
     const peliculas = await this.storage.get( 'peliculas' );
-    console.log(peliculas);
     this.peliculas = peliculas || [];
     return this.peliculas;
+  }
+
+  async cargarFavoritosTv() {
+    const series = await this.storage.get( 'tv' );
+    this.series = series || [];
+    console.log('cargarFavoritosTv', this.series);
+    return this.series;
   }
 
   async existePelicula( id ) {
 
     await this.cargarFavoritos();
     const existe = this.peliculas.find( peli => peli.id === id );
+
+    return ( existe ) ? true : false;
+  }
+
+  async existeTv( id ) {
+
+    await this.cargarFavoritosTv();
+    const existe = this.series.find( peli => peli.id === id );
 
     return ( existe ) ? true : false;
   }

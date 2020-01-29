@@ -1,9 +1,9 @@
 {
-  "name": "TMDApp",
-  "integrations": {
-    "capacitor": {},
-    "cordova": {}
-  },
-  "type": "angular",
-  "id": "91d7d6e9"
+    "name": "cinema-Movies and TV",
+    "integrations": {
+        "capacitor": {},
+        "cordova": {}
+    },
+    "type": "angular",
+    "id": "91d7d6e9"
 }

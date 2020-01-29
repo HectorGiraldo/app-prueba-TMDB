@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { RespuestaMDB, PeliculaDetalle, RespuestaCredits, RespuestaTrend, RespuestaBusqueda } from '../interfaces/interfaces';
+import { RespuestaMDB, PeliculaDetalle, RespuestaCredits, RespuestaTrend, RespuestaBusqueda, TvDetalle } from '../interfaces/interfaces';
 
 const apiKey = environment.apiKey;
 const apiUrl = environment.apiUrl;
@@ -88,12 +88,16 @@ export class MoviesService {
   }
 
   getDetalleTv( id: string ) {
-    return this.ejecutarQuery<PeliculaDetalle>(`/tv/${ id }?a=1`);
+    return this.ejecutarQuery<TvDetalle>(`/tv/${ id }?a=1`);
   }
 
   getTvPopular() {
     this.tvShowPopularPage++;
     return this.ejecutarQuery<RespuestaMDB>(`/tv/popular?a=1&page=${this.tvShowPopularPage}`);
+  }
+
+  getActoresTv( id: string ) {
+    return this.ejecutarQuery<RespuestaCredits>(`/tv/${ id }/credits?a=1`);
   }
 
 }

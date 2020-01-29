@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { MoviesService } from '../../services/movies.service';
-import { PeliculaDetalle,  Cast } from '../../interfaces/interfaces';
+import { Cast, TvDetalle } from '../../interfaces/interfaces';
 import { ModalController } from '@ionic/angular';
 import { DataService } from '../../services/data.service';
 
@@ -13,7 +13,7 @@ export class DetalleTvComponent implements OnInit {
 
   @Input() id;
 
-  detalle: PeliculaDetalle = {};
+  detalle: TvDetalle = {};
   oculto = 150;
   actores: Cast[] = [];
   estrella = 'star-outline';
@@ -38,7 +38,7 @@ export class DetalleTvComponent implements OnInit {
   }
 
    existeFavorito() {
-    this.dataService.existePelicula(this.id)
+    this.dataService.existeTv(this.id)
     .then( existe => this.estrella = ( existe ) ? 'star' : 'star-outline' );
   }
 
@@ -46,11 +46,12 @@ export class DetalleTvComponent implements OnInit {
     this.moviesService.getDetalleTv(id)
     .subscribe( resp => {
       this.detalle = resp;
+      console.log(this.detalle);
     });
   }
 
   gettvActores( id: string ) {
-    this.moviesService.getActoresPelicula(id)
+    this.moviesService.getActoresTv(id)
     .subscribe( resp => {
       this.actores = resp.cast;
     });
@@ -61,7 +62,7 @@ export class DetalleTvComponent implements OnInit {
   }
 
   favorito() {
-    const existe = this.dataService.guardarPelicula( this.detalle );
+    const existe = this.dataService.guardarTv( this.detalle );
     this.estrella = ( existe ) ? 'star' : 'star-outline';
   }
 

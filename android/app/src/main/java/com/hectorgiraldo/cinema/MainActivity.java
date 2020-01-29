@@ -1,4 +1,4 @@
-package com.hectorgiraldo.tmdApp;
+package com.hectorgiraldo.cinema;
 
 import android.os.Bundle;
 

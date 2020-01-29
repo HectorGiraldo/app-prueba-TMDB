@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="app_name">tmdApp</string>
-    <string name="title_activity_main">tmdApp</string>
-    <string name="package_name">com.hectorgiraldo.tmdApp</string>
-    <string name="custom_url_scheme">com.hectorgiraldo.tmdApp</string>
+    <string name="app_name">Cinema-Movie and TV</string>
+    <string name="title_activity_main">Cinema-Movie and TV</string>
+    <string name="package_name">com.hectorgiraldo.cinema</string>
+    <string name="custom_url_scheme">com.hectorgiraldo.cinema</string>
 </resources>

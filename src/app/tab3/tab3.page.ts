@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PeliculaDetalle } from '../interfaces/interfaces';
+import { PeliculaDetalle, TvDetalle } from '../interfaces/interfaces';
 import { DataService } from '../services/data.service';
 
 @Component({
@@ -10,6 +10,7 @@ import { DataService } from '../services/data.service';
 export class Tab3Page implements OnInit {
 
   peliculasFavoritas: PeliculaDetalle[] = [];
+  seriesFavoritas: TvDetalle[] = [];
 
   constructor (
     private dataService: DataService
@@ -29,6 +30,9 @@ export class Tab3Page implements OnInit {
 
   async cargarPeliculas() {
     this.peliculasFavoritas = await this.dataService.cargarFavoritos();
+    this.seriesFavoritas = await this.dataService.cargarFavoritosTv();
+    console.log('cargarPeliculas',this.seriesFavoritas);
+    
 
   }
 

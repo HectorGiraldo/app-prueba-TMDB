@@ -3,26 +3,27 @@
         <h1> {{ detalle.title }} </h1>
     </ion-label>
 
+
     <img [src]=" detalle.backdrop_path | imagen " *ngIf="detalle.backdrop_path">
 
-    <ion-grid>
+    <ion-grid class="ion-no-padding">
         <ion-row>
-            <ion-col size="4" class="poster-detalle-sobre">
+            <ion-col size="4" class="poster-detalle-sobre ion-no-padding">
                 <ion-card>
                     <img [src]="detalle.poster_path | imagen" class="poster" *ngIf="detalle.poster_path">
                 </ion-card>
 
             </ion-col>
-            <ion-col>
-                <ion-item color="dark">
-                    <ion-icon name="thumbs-up" slot="start" color="success"></ion-icon>
-                    <ion-label>Rating</ion-label>
-                    <ion-note slot="end" color="success"> {{detalle.vote_average}} </ion-note>
+            <ion-col class="ion-no-padding">
+                <ion-item class="ion-no-padding">
+                    <ion-icon name="thumbs-up" slot="start" color="light"></ion-icon>
+                    <ion-label color="light">Rating</ion-label>
+                    <ion-note slot="end" color="light" class="detalle"> {{detalle.vote_average}} </ion-note>
                 </ion-item>
-                <ion-item color="dark">
-                    <ion-icon name="contacts" slot="start" color="success"></ion-icon>
-                    <ion-label>Votos</ion-label>
-                    <ion-note slot="end" color="success"> {{detalle.vote_count}} </ion-note>
+                <ion-item class="ion-no-padding">
+                    <ion-icon name="contacts" slot="start" color="light"></ion-icon>
+                    <ion-label color="light">Votos</ion-label>
+                    <ion-note slot="end" color="light" class="detalle"> {{detalle.vote_count}} </ion-note>
                 </ion-item>
             </ion-col>
         </ion-row>
